@@ -1,10 +1,7 @@
-import { ISetPageAction } from '../actions/setPage'
 import { Default } from '../constants/Default'
 import { Action } from '../constants/Action'
-
-export interface IPageState {
-  page: number
-}
+import { IPageState } from '../interfaces/IPageState'
+import { ISetPageAction } from '../interfaces/ISetPageAction'
 
 const initialState = {
   page: Default.PAGE

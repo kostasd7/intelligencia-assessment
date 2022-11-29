@@ -8,9 +8,9 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { PageSize } from '../constants/PageSize'
-import { ISizeState } from '../reducers/sizeReducer'
 import { TRootState } from '../reducers'
 import { setSize } from '../actions/setSize'
+import { ISizeState } from '../interfaces/ISizeState'
 
 export const Header: () => JSX.Element = () => {
   const pageSizes = Object.values(PageSize).filter(Number.isFinite)

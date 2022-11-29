@@ -1,7 +1,6 @@
 import { Action } from '../constants/Action'
-import { ISizeState } from '../reducers/sizeReducer'
-
-export interface ISetSizeAction { type: Action, payload: ISizeState['size'] }
+import { ISetSizeAction } from '../interfaces/ISetSizeAction'
+import { ISizeState } from '../interfaces/ISizeState'
 
 export const setSize = (size: ISizeState['size']): ISetSizeAction => ({
   type: Action.SET_SIZE,

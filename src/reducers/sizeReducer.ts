@@ -1,10 +1,7 @@
-import { ISetSizeAction } from '../actions/setSize'
 import { Default } from '../constants/Default'
 import { Action } from '../constants/Action'
-
-export interface ISizeState {
-  size: number
-}
+import { ISizeState } from '../interfaces/ISizeState'
+import { ISetSizeAction } from '../interfaces/ISetSizeAction'
 
 const initialState = {
   size: Default.SIZE
