@@ -1,4 +1,6 @@
+import { PageSize } from './PageSize'
+
 export enum Default {
-  PAGE,
-  SIZE = 20
+  PAGE = 1,
+  SIZE = PageSize.M
 }
