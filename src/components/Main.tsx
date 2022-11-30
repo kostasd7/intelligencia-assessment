@@ -36,7 +36,7 @@ export const Main: ({ data }: { data: ITerm[] }) => JSX.Element = ({ data }: { d
             {data.map((row: ITerm, index: number) => (
               <TableRow key={index}>
                 <TableCell component="th">{index + 1}</TableCell>
-                <TableCell>{row.label}</TableCell>
+                <TableCell><strong>{row.label}</strong></TableCell>
                 <TableCell>{row.description}</TableCell>
                 <TableCell>
                   <Link href={row.iri} target="_blank" rel="noreferrer" underline="hover">{row.short_form}</Link>

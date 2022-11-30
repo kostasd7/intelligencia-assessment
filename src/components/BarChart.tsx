@@ -3,7 +3,12 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 export const BarChart: ({ labelData }: { labelData: string[] }) => JSX.Element = ({ labelData }: { labelData: string[] }) => {
-  const data = labelData.map((label: string) => label.split(' ').length)
+  const data = labelData.map(
+    (label: string, index: number) => ({
+      x: index + 1,
+      y: label.split(' ').length
+    })
+  )
   const options = {
     chart: {
       type: 'bar'
