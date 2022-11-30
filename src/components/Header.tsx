@@ -11,11 +11,15 @@ import { PageSize } from '../constants/PageSize'
 import { TRootState } from '../reducers'
 import { setSize } from '../actions/setSize'
 import { ISizeState } from '../interfaces/ISizeState'
+import { ILoadingState } from '../interfaces/ILoadingState'
 
 export const Header: () => JSX.Element = () => {
   const pageSizes = Object.values(PageSize).filter(Number.isFinite)
   const size = useSelector<TRootState, ISizeState['size']>(
     (state) => state.sizeReducer.size
+  )
+  const loading = useSelector<TRootState, ILoadingState['loading']>(
+    (state) => state.loadingReducer.loading
   )
   const dispatch = useDispatch()
   const onChange = (event: SelectChangeEvent): void => {
@@ -29,7 +33,7 @@ export const Header: () => JSX.Element = () => {
               <Typography variant="h2" color="inherit" noWrap sx={{ flexGrow: 5 }}>
                 Frontend Assessment
               </Typography>
-                <FormControl variant="filled" sx={{ flexGrow: 1 }}>
+                <FormControl variant="filled" disabled={loading} sx={{ flexGrow: 1 }}>
                     <InputLabel id="items">Items per page</InputLabel>
                     <Select
                         labelId="items"

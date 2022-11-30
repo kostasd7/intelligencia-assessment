@@ -5,7 +5,7 @@ export interface IResponse {
     totalPages: number
     totalElements: number
   }
-  _embedded: {
+  _embedded?: {
     terms: ITerm[]
   }
 }

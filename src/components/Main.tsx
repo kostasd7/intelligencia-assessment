@@ -1,55 +1,56 @@
 import React from 'react'
+import Link from '@mui/material/Link'
+import Paper from '@mui/material/Paper'
+import TableContainer from '@mui/material/TableContainer'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import CheckIcon from '@mui/icons-material/Check'
-import CloseIcon from '@mui/icons-material/Close'
+import TableCell from '@mui/material/TableCell'
+import TableIcon from './TableIcon'
+import BarChart from './BarChart'
 import { ITerm } from '../interfaces/ITerm'
 
 export const Main: ({ data }: { data: ITerm[] }) => JSX.Element = ({ data }: { data: ITerm[] }) => {
+  const labelData = data.map((term: ITerm) => term.label)
+
   return (
-      <main>
+    <main style={{ padding: '20px 40px' }}>
+      <BarChart labelData={labelData}></BarChart>
+
+      <TableContainer component={Paper}>
         <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>No.</TableCell>
               <TableCell>Label</TableCell>
               <TableCell>Description</TableCell>
-              <TableCell>Short Form</TableCell>
-              <TableCell>Url</TableCell>
-              <TableCell>Is Defining Ontology</TableCell>
-              <TableCell>Is Obsolete</TableCell>
-              <TableCell>Is Preferred Root</TableCell>
-              <TableCell align="right">Is Root</TableCell>
+              <TableCell>Link</TableCell>
+              <TableCell align="center">Is Defining Ontology</TableCell>
+              <TableCell align="center">Is Obsolete</TableCell>
+              <TableCell align="center">Is Preferred Root</TableCell>
+              <TableCell align="center">Is Root</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row: ITerm, index: number) => (
-                <TableRow key={index}>
-                  <TableCell><strong>{index + 1}</strong></TableCell>
-                  <TableCell>{row.label}</TableCell>
-                  <TableCell>{row.description}</TableCell>
-                  <TableCell>{row.short_form}</TableCell>
-                  <TableCell><a href={row.iri} target="_blank" rel="noreferrer">{row.iri}</a></TableCell>
-                  <TableCell>
-                    {row.is_defining_ontology ? <CheckIcon color='success'></CheckIcon> : <CloseIcon color='error'></CloseIcon>}
-                  </TableCell>
-                  <TableCell>
-                    {row.is_obsolete ? <CheckIcon color='success'></CheckIcon> : <CloseIcon color='error'></CloseIcon>}
-                  </TableCell>
-                  <TableCell>
-                    {row.is_preferred_root ? <CheckIcon color='success'></CheckIcon> : <CloseIcon color='error'></CloseIcon>}
-                  </TableCell>
-                  <TableCell align="right">
-                    {row.is_root ? <CheckIcon color='success'></CheckIcon> : <CloseIcon color='error'></CloseIcon>}
-                  </TableCell>
-                </TableRow>
+              <TableRow key={index}>
+                <TableCell component="th">{index + 1}</TableCell>
+                <TableCell>{row.label}</TableCell>
+                <TableCell>{row.description}</TableCell>
+                <TableCell>
+                  <Link href={row.iri} target="_blank" rel="noreferrer" underline="hover">{row.short_form}</Link>
+                </TableCell>
+                <TableIcon isChecked={row.is_defining_ontology}></TableIcon>
+                <TableIcon isChecked={row.is_obsolete}></TableIcon>
+                <TableIcon isChecked={row.is_preferred_root}></TableIcon>
+                <TableIcon isChecked={row.is_root}></TableIcon>
+              </TableRow>
             ))}
           </TableBody>
         </Table>
-      </main>
+      </TableContainer>
+    </main>
   )
 }
 
