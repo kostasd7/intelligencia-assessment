@@ -28,7 +28,7 @@ export const Header: () => JSX.Element = () => {
 
   return (
       <header>
-          <AppBar position="sticky">
+          <AppBar position="sticky" sx={{ bgcolor: 'lightsteelblue' }}>
             <Toolbar>
               <Typography variant="h2" color="inherit" noWrap sx={{ flexGrow: 5 }}>
                 Frontend Assessment
